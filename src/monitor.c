@@ -13,9 +13,9 @@ main (void) {
 		exit (EXIT_FAILURE);
 	}
 
-	mvaddstr (13, 33, "Hello world!");
-	refresh ();
-	sleep (3);
+	while (1) {
+		display_update ();
+	}
 
 	display_free (mainwin);
 

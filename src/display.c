@@ -20,3 +20,10 @@ int display_free (WINDOW * mainwin)
 	refresh ();
 	return 0;
 }
+
+int display_update ()
+{
+	mvaddstr (13, 33, "Hello world!");
+	refresh ();
+	sleep (1);
+}
