@@ -1,6 +1,6 @@
 # Cloudshell-monitor
 
-This is a simple monitoring program for Odroid Cloudshell TFT 2.2" LCD.
+This is a simple monitoring program for Odroid Cloudshell TFT 2.2" LCD.  
 Program is currently just print out "Hello world!", but it will be improved to 
 show networking status and many different useful informations for server.
 
