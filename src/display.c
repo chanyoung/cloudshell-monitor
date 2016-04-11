@@ -30,7 +30,10 @@ int display_free (WINDOW * mainwin)
 
 int display_update ()
 {
-	mvprintw (0, 0, "Welcome to the phdpark.com");
-	mvprintw (1, 0, "Cpu usage:%3d%%", get_cpu_usage());
+	mvprintw (0, 0, "========================================");
+	mvprintw (1, 0, "========================================");
+	mvprintw (2, 0, "====== Welcome to the phdpark.com ======");
+	mvprintw (3, 0, "========================================");
+	mvprintw (4, 0, "Cpu usage:%3d%%", get_cpu_usage());
 	sleep (SLEEP_TIME);
 }
