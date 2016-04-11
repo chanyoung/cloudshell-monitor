@@ -1,7 +1,7 @@
 CC = gcc
 LFLAGS = -lncurses
 
-OBJS = monitor.o display.o
+OBJS = monitor.o display.o cpustat.o
 NAME = monitor
 
 all	: monitor
