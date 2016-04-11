@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <ncurses.h>
 
+/**
+ * The period of program. (sec)
+ */
+#define SLEEP_TIME 10
+
 int display_init (WINDOW * mainwin)
 {
 	if ((mainwin = initscr()) == NULL) {
@@ -25,5 +30,5 @@ int display_update ()
 {
 	mvaddstr (13, 33, "Hello world!");
 	refresh ();
-	sleep (1);
+	sleep (SLEEP_TIME);
 }

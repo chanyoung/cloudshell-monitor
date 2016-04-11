@@ -5,6 +5,9 @@
 
 #include "display.h"
 
+/**
+ * Main function 
+ */
 int
 main (void) {
 	WINDOW * mainwin;
@@ -13,6 +16,10 @@ main (void) {
 		exit (EXIT_FAILURE);
 	}
 
+	/**
+	 * Main routine of the program.
+	 * Update display continuously.
+	 */
 	while (1) {
 		display_update ();
 	}
