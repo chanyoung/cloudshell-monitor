@@ -6,7 +6,7 @@
 /**
  * The period of program. (sec)
  */
-#define SLEEP_TIME 1
+#define SLEEP_TIME 60
 
 int display_init (WINDOW * mainwin)
 {
@@ -30,7 +30,7 @@ int display_free (WINDOW * mainwin)
 
 int two_column_line (int line_number, char *left, char *right)
 {
-	mvprintw (line_number, 0, "=%18s||%18s=");
+	mvprintw (line_number, 0, "= %-16s || %-16s =", left, right);
 }
 
 int display_update ()
@@ -39,8 +39,8 @@ int display_update ()
 	mvprintw (1, 0, "========================================");
 	mvprintw (2, 0, "====== Welcome to the phdpark.com ======");
 	mvprintw (3, 0, "========================================");
-	mvprintw (4, 0, "Cpu usage:%3d%%", get_cpu_usage());
+	mvprintw (4, 0, "= Cpu usage:%3d%%", get_cpu_usage());
 	two_column_line (5, "Test", "Test");
-	two_column_line (6, "AAAAAAAA", "AAAAAAAAAAA");
+	two_column_line (6, "AAAAAAAA", "AAAAAAAAA");
 	sleep (SLEEP_TIME);
 }
