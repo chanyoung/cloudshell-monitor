@@ -6,6 +6,7 @@ int get_cpu_usage () {
 	FILE *stat;
 	static unsigned long long old_user, old_nuser, old_system, old_idle;
 	unsigned long long user = 0, nuser = 0, system = 0, idle = 0;
+	unsigned int idle_usage;
 
 	if ((stat = fopen ("/proc/stat", "r")) == NULL) {
 		fprintf (stderr, "Error opening /proc/stat.\n");
@@ -20,10 +21,28 @@ int get_cpu_usage () {
 	fscanf (stat, "%*s %llu %llu %llu %llu",
 		&user, &nuser, &system, &idle);
 
+	/**
+	 * Calculate cpu idle jiffies.
+	 *
+	 *                            idle jiffies
+	 *  -----------------------------------------------------------------
+	 *   user jiffies + nice user jiffies + system jiffies + idle jiffies
+	 *
+	 */
+	idle_usage = (((idle - old_idle) * 100) / ((user - old_user) + (nuser - old_nuser) + (system - old_system) + (idle - old_idle)));
+
+	/**
+	 * Save current jiffies into old values.
+	 */
 	old_user = user;
 	old_nuser = nuser;
 	old_system = system;
 	old_idle = idle;
 
 	fclose (stat);
+
+	/**
+	 * Cpu usage = 100 - idle usage.
+	 */
+	return (100 - idle_usage);
 }

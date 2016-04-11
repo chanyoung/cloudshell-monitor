@@ -22,6 +22,7 @@ main (void) {
 	 */
 	while (1) {
 		display_update ();
+		refresh ();
 	}
 
 	display_free (mainwin);

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <ncurses.h>
 
+#include "cpustat.h"
+
 /**
  * The period of program. (sec)
  */
@@ -28,7 +30,6 @@ int display_free (WINDOW * mainwin)
 
 int display_update ()
 {
-	mvaddstr (13, 33, "Hello world!");
-	refresh ();
+	mvprintw (0, 0, "Cpu usage: %d", get_cpu_usage());
 	sleep (SLEEP_TIME);
 }
