@@ -28,6 +28,11 @@ int display_free (WINDOW * mainwin)
 	return 0;
 }
 
+int two_column_line (int line_number, char *left, char *right)
+{
+	mvprintw (line_number, 0, "=%18s||%18s=");
+}
+
 int display_update ()
 {
 	mvprintw (0, 0, "========================================");
@@ -35,5 +40,7 @@ int display_update ()
 	mvprintw (2, 0, "====== Welcome to the phdpark.com ======");
 	mvprintw (3, 0, "========================================");
 	mvprintw (4, 0, "Cpu usage:%3d%%", get_cpu_usage());
+	two_column_line (5, "Test", "Test");
+	two_column_line (6, "AAAAAAAA", "AAAAAAAAAAA");
 	sleep (SLEEP_TIME);
 }
