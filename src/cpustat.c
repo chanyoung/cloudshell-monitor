@@ -46,3 +46,18 @@ int get_cpu_usage () {
 	 */
 	return (100 - idle_usage);
 }
+
+int get_cpu_heat () {
+	FILE *heat;
+	unsigned int temperature;
+
+	if ((heat = fopen ("/sys/class/thermal/thermal_zone0/temp", "r")) == NULL) {
+		fprintf (stderr, "Error opening /proc/stat.\n");
+		return -1;
+	}
+
+	fscanf (heat, "%u", &temperature);
+	fclose (heat);
+
+	return (temperature / 1000);
+}

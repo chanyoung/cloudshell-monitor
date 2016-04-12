@@ -39,8 +39,9 @@ int display_update ()
 	mvprintw (1, 0, "========================================");
 	mvprintw (2, 0, "====== Welcome to the phdpark.com ======");
 	mvprintw (3, 0, "========================================");
-	mvprintw (4, 0, "= Cpu usage:%3d%%", get_cpu_usage());
-	two_column_line (5, "Test", "Test");
-	two_column_line (6, "AAAAAAAA", "AAAAAAAAA");
+	mvprintw (4, 0, "= Cpu usage:%3d%%", get_cpu_usage ());
+	mvprintw (5, 0, "= Cpu heat:%4d'C", get_cpu_heat ());
+	two_column_line (6, "Test", "Test");
+	two_column_line (7, "AAAAAAAA", "AAAAAAAAA");
 	sleep (SLEEP_TIME);
 }
