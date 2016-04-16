@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ncurses.h>
 
-#include "cpustat.h"
+#include "stat.h"
 
 /**
  * The period of program. (sec)
