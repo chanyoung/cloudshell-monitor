@@ -6,7 +6,7 @@
 /**
  * The period of program. (sec)
  */
-#define SLEEP_TIME 60
+#define SLEEP_TIME 1
 
 int display_init (WINDOW * mainwin)
 {
@@ -36,12 +36,19 @@ int two_column_line (int line_number, char *left, char *right)
 int display_update ()
 {
 	mvprintw (0, 0, "========================================");
-	mvprintw (1, 0, "========================================");
-	mvprintw (2, 0, "====== Welcome to the phdpark.com ======");
-	mvprintw (3, 0, "========================================");
-	mvprintw (4, 0, "= Cpu usage:%3d%%", get_cpu_usage ());
-	mvprintw (5, 0, "= Cpu heat:%4d'C", get_cpu_heat ());
-	two_column_line (6, "Test", "Test");
-	two_column_line (7, "AAAAAAAA", "AAAAAAAAA");
+	mvprintw (1, 0, "============== phdpark.com =============");
+	two_column_line (2, "System uptime", "152:32:25");
+	two_column_line (3, "Cpu usage: 22%", "temperatur: 56'C");
+	two_column_line (4, "Mem usage: 59%", "free: 102M");
+	two_column_line (5, "mmcblk busy: 100", "free: 102M");
+	two_column_line (6, "sda busy: 100", "free: 324G");
+	mvprintw (7, 0, "================= Users ================");
+	mvprintw (8, 0, "= root,monitor,cypark,chpark,ftp       =");
+	mvprintw (9, 0, "======= Established connections ========");
+	two_column_line (10, "192.168.0.1", "7001");
+	two_column_line (11, "192.168.0.1", "7001");
+	two_column_line (12, "192.168.0.1", "7001");
+	two_column_line (13, "192.168.0.1", "7001");
+	mvprintw (14, 0, "========================================");
 	sleep (SLEEP_TIME);
 }

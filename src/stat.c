@@ -52,7 +52,7 @@ int get_cpu_heat () {
 	unsigned int temperature;
 
 	if ((heat = fopen ("/sys/class/thermal/thermal_zone0/temp", "r")) == NULL) {
-		fprintf (stderr, "Error opening /proc/stat.\n");
+		fprintf (stderr, "Error opening /sys/class/thermal/thermal_zone0/temp.\n");
 		return -1;
 	}
 
@@ -60,4 +60,20 @@ int get_cpu_heat () {
 	fclose (heat);
 
 	return (temperature / 1000);
+}
+
+int get_mem_usage () {
+	FILE *file;
+	unsigned int total, free;
+
+	if ((file = fopen ("/proc/meminfo", "r")) == NULL) {
+		fprintf (stderr, "Error opening /proc/meminfo.\n");
+		return -1;
+	}
+
+	fscanf (file, "%*s %u %*s\n%*s %u", &total, &free);
+
+	fclose (file);
+
+	return (100 - (((float) free / total) * 100));
 }

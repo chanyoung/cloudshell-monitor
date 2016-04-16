@@ -3,5 +3,6 @@
 
 int get_cpu_usage ();
 int get_cpu_heat ();
+int get_mem_usage ();
 
 #endif
