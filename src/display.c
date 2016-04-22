@@ -2,23 +2,27 @@
 #include <ncurses.h>
 
 #include "stat.h"
+#include "display.h"
 
 /**
  * The period of program. (sec)
  */
 #define SLEEP_TIME 1
 
-int display_init (WINDOW * mainwin)
+int block_init (struct block *block)
 {
+/*
 	if ((mainwin = initscr()) == NULL) {
 		fprintf (stderr, "Error initialising ncurses.\n");
 		return -1;
 	}
 	return 0;
+*/
 }
 
-int display_free (WINDOW * mainwin)
+int block_free (struct block *block)
 {
+/*
 	if (mainwin == NULL)
 		return -1;
 
@@ -26,6 +30,7 @@ int display_free (WINDOW * mainwin)
 	endwin ();
 	refresh ();
 	return 0;
+*/
 }
 
 int two_column_line (int line_number, char *left, char *right)
@@ -33,8 +38,9 @@ int two_column_line (int line_number, char *left, char *right)
 	mvprintw (line_number, 0, "= %-16s || %-16s =", left, right);
 }
 
-int display_update ()
+int block_update (struct block *block)
 {
+/*
 	mvprintw (0, 0, "========================================");
 	mvprintw (1, 0, "============== phdpark.com =============");
 	two_column_line (2, "System uptime", "152:32:25");
@@ -50,5 +56,6 @@ int display_update ()
 	two_column_line (12, "192.168.0.1", "7001");
 	two_column_line (13, "192.168.0.1", "7001");
 	mvprintw (14, 0, "========================================");
+*/
 	sleep (SLEEP_TIME);
 }
