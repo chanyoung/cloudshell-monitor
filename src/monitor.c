@@ -12,51 +12,30 @@ int
 main (void) {
 	struct block main, cpu_usage, mem_usage, disk_usage, cpu_heat;
 
-/*
-	if (display_init (mainwin)) {
-		exit (EXIT_FAILURE);
-	}
-*/
-
 	initscr ();
 
-	main.window = newwin (15,40,0,0);
-	box (main.window, 0, 0);
-	touchwin (main.window);
-	wrefresh (main.window);
-
-	cpu_usage.window = newwin (12,7,1,7);
-	mem_usage.window = newwin (12,7,1,15);
-	disk_usage.window = newwin (12,7,1,23);
-	cpu_heat.window = newwin (12,7,1,31);
-
-	box (cpu_usage.window, 0, 0);
-	wrefresh (cpu_usage.window);
+	block_init (&main, 15,40,0,0);
+	block_init (&cpu_usage, 12,7,1,6);
+	block_init (&mem_usage, 12,7,1,14);
+	block_init (&disk_usage, 12,7,1,22);
+	block_init (&cpu_heat, 12,7,1,30);
 	
-	box (mem_usage.window, 0, 0);
-	wrefresh (mem_usage.window);
-
-	box (disk_usage.window, 0, 0);
-	wrefresh (disk_usage.window);
-
-	box (cpu_heat.window, 0, 0);
-	wrefresh (cpu_heat.window);
-
-	getchar ();
+	draw_main (&main);
 
 	/**
 	 * Main routine of the program.
 	 * Update display continuously.
 	 */
-/*
 	while (1) {
-		display_update ();
-		refresh ();
+		getchar ();
 	}
-*/
-	endwin ();
 
-//	display_free (mainwin);
+	block_free (&cpu_heat);
+	block_free (&disk_usage);
+	block_free (&mem_usage);
+	block_free (&cpu_usage);
+	block_free (&main);
+	endwin ();
 
 	return EXIT_SUCCESS;
 }

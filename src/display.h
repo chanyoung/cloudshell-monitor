@@ -10,7 +10,7 @@ struct block {
 	int value;
 };
 
-int block_init (struct block *);
+int block_init (struct block *, int, int, int, int);
 int block_free (struct block *);
 int block_update (struct block *);
 

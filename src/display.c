@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <ncurses.h>
-
+#include <ncurses.h> 
 #include "stat.h"
 #include "display.h"
 
@@ -9,28 +8,21 @@
  */
 #define SLEEP_TIME 1
 
-int block_init (struct block *block)
+int block_init (struct block *block, int x_length, int y_length, int x_offset, int y_offset)
 {
-/*
-	if ((mainwin = initscr()) == NULL) {
-		fprintf (stderr, "Error initialising ncurses.\n");
-		return -1;
-	}
+	block->window = newwin (x_length, y_length, x_offset, y_offset);
+	box (block->window, 0, 0);
+	wrefresh (block->window);
 	return 0;
-*/
 }
 
 int block_free (struct block *block)
 {
-/*
-	if (mainwin == NULL)
+	if (block == NULL)
 		return -1;
 
-	delwin (mainwin);
-	endwin ();
-	refresh ();
+	delwin (block->window);
 	return 0;
-*/
 }
 
 int two_column_line (int line_number, char *left, char *right)
@@ -58,4 +50,31 @@ int block_update (struct block *block)
 	mvprintw (14, 0, "========================================");
 */
 	sleep (SLEEP_TIME);
+}
+
+int draw_main (struct block *block)
+{
+	int i = 0;
+
+	/*
+	 * Title.
+	 */
+	mvwprintw (block->window, 0, 14, "%12s", " phdpark.com ");
+
+	/*
+	 * Gradation on a bar graph.
+	 */
+	for (i = 0; i < 6; i++) {
+		mvwprintw (block->window, (i * 2) + 1, 1, "%4d%c", 100 - (20 * i), '-');
+	}
+
+	/*
+	 * Graph types.
+	 */
+	mvwprintw (block->window, 13, 6, "%6s", "Cpu %");
+	mvwprintw (block->window, 13, 14, "%6s", "Mem %");
+	mvwprintw (block->window, 13, 22, "%6s", "IO %");
+	mvwprintw (block->window, 13, 30, "%6s", "Cpu'C");
+
+	wrefresh (block->window);
 }
