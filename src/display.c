@@ -25,6 +25,26 @@ int block_free (struct block *block)
 
 int block_update (struct block *block)
 {
+	int color = 0;
+
+	while (block != NULL) {
+		/*
+		if (block->value > 75) { color = RED; }
+		else if (block->value > 50) { color = YELLOW; }
+		else { color = GREEN; }
+		*/
+		color++;
+		mvwprintw (block->window, block->y_offset + (block->y_length /2), block->x_offset, "%s", block->next->x_offset);
+
+		attron (A_BOLD);
+		//mvwprintw (block->window, block->y_offset + (block->y_length / 2), 
+		//block->x_offset, "%5d", block->value);
+		attroff (A_BOLD);
+
+		wrefresh (block->window);
+
+		block = block->next;
+	}
 	sleep (SLEEP_TIME);
 }
 

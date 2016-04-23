@@ -10,7 +10,7 @@ monitor	: $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
 
 %.o	: src/%.c
-	$(CC) -c $< -o $@
+	$(CC) -g -c $< -o $@
 
 clean	:
 	rm -rf $(OBJS) $(NAME) core.*
