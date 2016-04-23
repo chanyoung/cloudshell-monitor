@@ -44,10 +44,9 @@ main (void) {
 	while (1) {
 		cpu_usage.value = get_cpu_usage ();
 		mem_usage.value = get_mem_usage ();
-		disk_usage.value = 80;
+		disk_usage.value = (rand () % 100) + 1;
 		cpu_heat.value = get_cpu_heat ();
 		block_update (&cpu_usage);
-		getchar ();
 	}
 
 	block_free (&cpu_usage);
