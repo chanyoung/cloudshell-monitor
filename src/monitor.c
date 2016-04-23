@@ -23,6 +23,10 @@ main (void) {
 	start_color ();
 	use_default_colors ();
 
+	init_pair (WHITE_GREEN, COLOR_WHITE, COLOR_GREEN);
+	init_pair (WHITE_YELLOW, COLOR_WHITE, COLOR_YELLOW);
+	init_pair (WHITE_RED, COLOR_WHITE, COLOR_RED);
+
 	block_init (&main, NULL, 15, 40, 0, 0);
 	draw_main (&main);
 
