@@ -35,6 +35,8 @@ main (void) {
 	block_init (&mem_usage, &disk_usage, 12, 7, 1, 14);
 	block_init (&cpu_usage, &mem_usage, 12, 7, 1, 6);
 
+	curs_set (0);
+
 	/**
 	 * Main routine of the program.
 	 * Update display continuously.
