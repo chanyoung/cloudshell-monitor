@@ -38,6 +38,13 @@ int block_update (struct block *block)
 		else if (block->value > 50) { color = WHITE_YELLOW; }
 		else { color = WHITE_GREEN; }
 
+		// Refresh
+		height = block->y_length - 2;
+		while (height > 0) {
+			mvwprintw (block->window, height, 1, "%5s", "");
+			height--;
+		}
+
 		// Fill box
 		height = block->value / 10;
 		width = block->value % 5;
