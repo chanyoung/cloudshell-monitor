@@ -15,12 +15,12 @@ main (void) {
 	initscr ();
 
 	block_init (&main, 15,40,0,0);
+	draw_main (&main);
+
 	block_init (&cpu_usage, 12,7,1,6);
 	block_init (&mem_usage, 12,7,1,14);
 	block_init (&disk_usage, 12,7,1,22);
 	block_init (&cpu_heat, 12,7,1,30);
-	
-	draw_main (&main);
 
 	/**
 	 * Main routine of the program.

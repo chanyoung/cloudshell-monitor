@@ -54,7 +54,7 @@ int block_update (struct block *block)
 
 int draw_main (struct block *block)
 {
-	int i = 0;
+	int i = 0,j = 0;
 
 	/*
 	 * Title.
@@ -66,6 +66,9 @@ int draw_main (struct block *block)
 	 */
 	for (i = 0; i < 6; i++) {
 		mvwprintw (block->window, (i * 2) + 1, 1, "%4d%c", 100 - (20 * i), '-');
+		for (j = 0; j < 3; j++) {
+			mvwprintw (block->window, (i * 2) + 1, 13 + (j * 8), "-");
+		}
 	}
 
 	/*
@@ -73,7 +76,7 @@ int draw_main (struct block *block)
 	 */
 	mvwprintw (block->window, 13, 6, "%6s", "Cpu %");
 	mvwprintw (block->window, 13, 14, "%6s", "Mem %");
-	mvwprintw (block->window, 13, 22, "%6s", "IO %");
+	mvwprintw (block->window, 13, 22, "%6s", "I/O %");
 	mvwprintw (block->window, 13, 30, "%6s", "Cpu'C");
 
 	wrefresh (block->window);
